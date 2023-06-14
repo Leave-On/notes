@@ -1,0 +1,19 @@
+.NoteEditForm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    background-color: gray;
+    border-radius: 8px;
+    padding: 0 15px;
+    height: 5em;
+}
+
+.input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}

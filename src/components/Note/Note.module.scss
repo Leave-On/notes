@@ -1,0 +1,14 @@
+.Note {
+    width: 40em;
+}
+
+.note_item {
+    background-color: gray;
+    display: flex;
+    height: 5em;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 0 15px;
+}

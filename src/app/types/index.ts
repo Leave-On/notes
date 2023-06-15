@@ -1,7 +1,7 @@
 export interface INote {
-	id: number;
+	id: string;
 	date?: string;
 	text: string;
-	status_id?: number;
-	priority_id?: number;
+	status_id?: string;
+	priority_id?: string;
 }

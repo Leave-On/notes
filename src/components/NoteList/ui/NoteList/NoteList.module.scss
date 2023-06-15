@@ -1,0 +1,27 @@
+.NoteList {
+
+}
+
+.add_note_form {
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    width: 100%;
+    height: 5em;
+    background-color: rgb(66, 66, 66);
+}
+
+.note_input {
+    width: 75%;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+.note_select_container {
+    display: flex;
+    align-items: center;
+}

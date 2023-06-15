@@ -3,7 +3,17 @@ import { INote } from 'app/types';
 
 interface AddNoteArg {
 	text: string;
-	priority_id: number;
+	priority_id: string;
+}
+
+export interface getStatusesResult {
+	id: string;
+	status: string;
+}
+
+export interface getPropertiesResult {
+	id: string;
+	name: string;
 }
 
 const baseUrl = 'https://test.ananievds.ru/';
@@ -20,7 +30,7 @@ export const notesApi = createApi({
 					? [...result.map(({ id }) => ({ type: 'notes' as const, id })), { type: 'notes', id: 'LIST' }]
 					: [{ type: 'notes', id: 'LIST' }],
 		}),
-		addNote: build.mutation<INote, AddNoteArg>({
+		addNote: build.mutation<INote, FormData>({
 			query: (arg) => ({
 				url: 'note_add',
 				method: 'POST',
@@ -28,10 +38,10 @@ export const notesApi = createApi({
 			}),
 			invalidatesTags: [{ type: 'notes', id: 'LIST' }],
 		}),
-		editNote: build.query<INote[], number>({
+		editNote: build.query<INote[], string>({
 			query: (id) => `note_edit?note_id=${id}`,
 		}),
-		saveNote: build.mutation<INote, INote>({
+		saveNote: build.mutation<INote, FormData>({
 			query: (arg) => ({
 				url: 'note_save',
 				method: 'POST',
@@ -39,10 +49,10 @@ export const notesApi = createApi({
 			}),
 			invalidatesTags: [{ type: 'notes', id: 'LIST' }],
 		}),
-		getStatus: build.query<INote, void>({
+		getStatuses: build.query<getStatusesResult[], void>({
 			query: () => 'status_list',
 		}),
-		getPriority: build.query<INote, void>({
+		getPriorities: build.query<getPropertiesResult[], void>({
 			query: () => 'priority_list',
 		}),
 	}),
@@ -53,6 +63,6 @@ export const {
 	useAddNoteMutation,
 	useEditNoteQuery,
 	useSaveNoteMutation,
-	useGetStatusQuery,
-	useGetPriorityQuery,
+	useGetStatusesQuery,
+	useGetPrioritiesQuery,
 } = notesApi;

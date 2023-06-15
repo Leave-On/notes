@@ -1,6 +1,6 @@
 import { useEditNoteQuery } from 'app/api/notesApi';
 import { INote } from 'app/types';
-import { NoteEditForm } from 'components/NoteEditForm/NoteEditForm';
+import { NoteEditForm } from 'components/NoteList/ui/NoteEditForm/NoteEditForm';
 import { useState } from 'react';
 import cls from './Note.module.scss';
 
@@ -35,7 +35,21 @@ export const Note = ({ note }: NoteProps) => {
 				/>
 			) : (
 				<div className={cls.note_item}>
-					<div key={note.id}>{note.text}</div>
+					<div
+						className={cls.note_item_text}
+						key={note.id}
+
+					>
+						<h3>{note.text}</h3>
+					</div>
+					<div className={cls.note_item_attributes}>
+						<p>Status</p>
+						{note.status_id}
+					</div>
+					<div className={cls.note_item_attributes}>
+						<p>Priority</p>
+						{note.priority_id}
+					</div>
 					<button onClick={handleEdit}>Edit</button>
 				</div>
 			)}

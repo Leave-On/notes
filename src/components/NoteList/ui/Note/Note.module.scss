@@ -12,3 +12,14 @@
     margin: 15px 0;
     padding: 0 15px;
 }
+
+.note_item_text {
+    width: 75%;
+}
+
+.note_item_attributes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

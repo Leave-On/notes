@@ -5,7 +5,16 @@
 }
 
 .app {
+    position: relative;
     display: flex;
+    gap: 30px;
     justify-content: center;
     align-items: baseline;
+    padding: 20px 0;
+}
+
+.attrubutesList {
+    // position: absolute;
+    // right: 200px;
+    // top: 20px;
 }

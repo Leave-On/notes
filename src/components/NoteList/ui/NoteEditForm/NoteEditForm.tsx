@@ -3,10 +3,10 @@ import { useState } from 'react';
 import cls from './NoteEditForm.module.scss';
 
 interface NoteEditFormProps {
-	noteId: number;
+	noteId: string;
 	initialText: string;
-	initialStatusId: number | string;
-	initialPriorityId: number | string;
+	initialStatusId: string;
+	initialPriorityId: string;
 }
 
 export const NoteEditForm = ({ initialText, initialStatusId, initialPriorityId, noteId }: NoteEditFormProps) => {
@@ -14,14 +14,16 @@ export const NoteEditForm = ({ initialText, initialStatusId, initialPriorityId, 
 	const [statusId, setStatusId] = useState(initialStatusId);
 	const [priorityId, setPriorityId] = useState(initialPriorityId);
 	const [saveNote, {}] = useSaveNoteMutation();
-	const handleSaveNote = async () => {
+
+	const handleSaveNote = () => {
 		try {
-			await saveNote({
-				id: noteId,
-				text: noteText,
-				priority_id: 2,
-				status_id: 2,
-			});
+			const editedNoteForm = new FormData();
+			editedNoteForm.append('id', noteId)
+			editedNoteForm.append('text', noteText)
+			editedNoteForm.append('priority_id', priorityId)
+			editedNoteForm.append('status_id', statusId)
+			saveNote(editedNoteForm);
+			console.log('saved');
 		} catch (error) {
 			console.log(error);
 		}
@@ -42,6 +44,7 @@ export const NoteEditForm = ({ initialText, initialStatusId, initialPriorityId, 
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
+				<option value="4">4</option>
 			</select>
 			<select
 				value={priorityId}

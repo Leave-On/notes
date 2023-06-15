@@ -1,1 +1,1 @@
-export { ToggleAttributes } from './ui/ToggleAttributes/ToggleAttributes'
+export { ToggleAttributes } from './ui/ToggleAttributes/ToggleAttributes';

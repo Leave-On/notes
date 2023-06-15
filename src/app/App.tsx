@@ -6,7 +6,7 @@ export const App: React.FC = () => {
 	return (
 		<div className="app">
 			<NoteList />
-			<ToggleAttributes className='attrubutesList'/>
+			<ToggleAttributes className="attrubutesList" />
 		</div>
 	);
 };

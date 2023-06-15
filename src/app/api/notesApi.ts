@@ -1,11 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { INote } from 'app/types';
 
-interface AddNoteArg {
-	text: string;
-	priority_id: string;
-}
-
 export interface getStatusesResult {
 	id: string;
 	status: string;
@@ -27,7 +22,13 @@ export const notesApi = createApi({
 			query: () => 'notes_list',
 			providesTags: (result) =>
 				result
-					? [...result.map(({ id }) => ({ type: 'notes' as const, id })), { type: 'notes', id: 'LIST' }]
+					? [
+						...result.map(({ id }) => ({
+							type: 'notes' as const,
+							id,
+						})),
+						{ type: 'notes', id: 'LIST' },
+					  ]
 					: [{ type: 'notes', id: 'LIST' }],
 		}),
 		addNote: build.mutation<INote, FormData>({

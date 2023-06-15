@@ -8,7 +8,7 @@ interface NoteProps {
 	note: INote;
 }
 
-export const Note = ({ note }: NoteProps) => {
+export const Note: React.FC<NoteProps> = ({ note }) => {
 	const { data, error, isError } = useEditNoteQuery(note.id);
 	const [isEdit, setIsEdit] = useState(false);
 	const [editedNote, setEditedNote] = useState<INote>(null);
@@ -35,11 +35,7 @@ export const Note = ({ note }: NoteProps) => {
 				/>
 			) : (
 				<div className={cls.note_item}>
-					<div
-						className={cls.note_item_text}
-						key={note.id}
-
-					>
+					<div className={cls.note_item_text} key={note.id}>
 						<h3>{note.text}</h3>
 					</div>
 					<div className={cls.note_item_attributes}>

@@ -9,7 +9,12 @@ interface NoteEditFormProps {
 	initialPriorityId: string;
 }
 
-export const NoteEditForm = ({ initialText, initialStatusId, initialPriorityId, noteId }: NoteEditFormProps) => {
+export const NoteEditForm: React.FC<NoteEditFormProps> = ({
+	initialText,
+	initialStatusId,
+	initialPriorityId,
+	noteId,
+}) => {
 	const [noteText, setNoteText] = useState(initialText);
 	const [statusId, setStatusId] = useState(initialStatusId);
 	const [priorityId, setPriorityId] = useState(initialPriorityId);
@@ -18,10 +23,10 @@ export const NoteEditForm = ({ initialText, initialStatusId, initialPriorityId, 
 	const handleSaveNote = () => {
 		try {
 			const editedNoteForm = new FormData();
-			editedNoteForm.append('id', noteId)
-			editedNoteForm.append('text', noteText)
-			editedNoteForm.append('priority_id', priorityId)
-			editedNoteForm.append('status_id', statusId)
+			editedNoteForm.append('id', noteId);
+			editedNoteForm.append('text', noteText);
+			editedNoteForm.append('priority_id', priorityId);
+			editedNoteForm.append('status_id', statusId);
 			saveNote(editedNoteForm);
 			console.log('saved');
 		} catch (error) {
@@ -35,25 +40,38 @@ export const NoteEditForm = ({ initialText, initialStatusId, initialPriorityId, 
 				className={cls.input}
 				type="text"
 				value={noteText}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNoteText(e.target.value)}
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+					setNoteText(e.target.value)
+				}
 			/>
-			<select
-				value={statusId}
-				onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setStatusId(e.target.value)}
-			>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-			</select>
-			<select
-				value={priorityId}
-				onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPriorityId(e.target.value)}
-			>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>
+			<div className={cls.edit_form_selector}>
+				<p>Status</p>
+				<select
+					value={statusId}
+					onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+						setStatusId(e.target.value)
+					}
+				>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div className={cls.edit_form_selector}>
+				<p>Priority</p>
+				<select
+					value={priorityId}
+					onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+						setPriorityId(e.target.value)
+					}
+				>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+
 			<button onClick={handleSaveNote}>Save</button>
 		</form>
 	);

@@ -1,0 +1,12 @@
+.attributes_container {
+    display: flex;
+    width: 180px;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.attribute_item {
+    margin-right: 20px;
+    min-width: fit-content;
+}

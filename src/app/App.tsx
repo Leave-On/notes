@@ -1,5 +1,5 @@
-import { NoteList } from 'components/NoteList/ui/NoteList/NoteList';
-import { ToggleAttributes } from 'components/ToggleAttributes/ui/ToggleAttributes/ToggleAttributes';
+import { NoteList } from 'components/NoteList';
+import { ToggleAttributes } from 'components/ToggleAttributes';
 import './styles/index.scss';
 
 export const App: React.FC = () => {

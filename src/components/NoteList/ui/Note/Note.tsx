@@ -1,6 +1,6 @@
 import { useEditNoteQuery } from 'app/api/notesApi';
 import { INote } from 'app/types';
-import { NoteEditForm } from 'components/NoteList/ui/NoteEditForm/NoteEditForm';
+import { NoteEditForm } from '../NoteEditForm/NoteEditForm';
 import { useState } from 'react';
 import cls from './Note.module.scss';
 

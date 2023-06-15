@@ -7,16 +7,13 @@ interface IAtribute {
 }
 
 interface AttributesListProps {
-  className?: string;
   attribute: IAtribute;
-  attributeName: string;
 }
 
-export const Attribute: React.FC<AttributesListProps> = ({className, attribute, attributeName}) => {
+export const Attribute: React.FC<AttributesListProps> = ({attribute}) => {
 
     return (
-    <div className={cls.AttributesList}>
-      <h3>{attributeName}</h3>
+    <div className={cls.attribute}>
       <h4>{attribute.id}</h4>
       {attribute.name
         ? <p>{attribute.name}</p>

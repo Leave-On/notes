@@ -26,14 +26,16 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
 
 	return (
 		<div className={cls.Note}>
-			{isEdit ? (
+			{isEdit
+			? (
 				<NoteEditForm
 					noteId={editedNote.id}
 					initialText={editedNote.text}
 					initialStatusId={editedNote.status_id}
 					initialPriorityId={editedNote.priority_id}
 				/>
-			) : (
+				)
+			: (
 				<div className={cls.note_item}>
 					<div className={cls.note_item_text} key={note.id}>
 						<h3>{note.text}</h3>

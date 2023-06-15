@@ -24,6 +24,10 @@ export const NoteList: React.FC = () => {
 		}
 	};
 
+	if(isLoading) {
+		return <div>Wait a second...</div>
+	}
+
 	return (
 		<div className={cls.NoteList}>
 			<>
